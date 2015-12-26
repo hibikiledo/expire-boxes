@@ -3,17 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
   <title>ExpiredBoxes-Landing</title>
-  <%= yield :head %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+      <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Expired Box <span class="badge">Beta</span></a>
+          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      </div>
+      <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="nav navbar-nav">
+              <li <%= 'class=active' if params[:controller] == 'landing' && params[:action] == 'home' %> role="presentation"><a href="/">Welcome </a></li>
+              <li <%= 'class=active' if params[:controller] == 'landing' && params[:action] == 'usage' %> role="presentation"><a href="#">Usage </a></li>
+              <li <%= 'class=active' if params[:controller] == 'landing' && params[:action] == 'donate' %> role="presentation"><a href="#">Donate </a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li <%= 'class=active' if params[:controller] == 'user' && params[:action] == 'new' %> role="presentation">                
+                <a href=<%= new_user_path %>>Register <span class="glyphicon glyphicon-user"></span></a>
+              </li>
+              <li role="presentation"><a href="#"> Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
 <%= yield %>
 
+<section class="footer">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="text-center">Create with ❤ and hope to reduce the impacts on earth.</p>
+        </div>
+    </div>
+</section>
+
 </body>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </html>
