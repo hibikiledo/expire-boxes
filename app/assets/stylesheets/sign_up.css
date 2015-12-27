@@ -88,3 +88,12 @@
   margin:30px;
   outline:none;
 }
+
+
+#error_explanation h2{
+  font-size: 22px;
+}
+
+#error_explanation ul{
+  padding-left: 50px;
+}

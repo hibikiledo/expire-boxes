@@ -24,23 +24,34 @@
               <li <%= 'class=active' if params[:controller] == 'landing' && params[:action] == 'donate' %> role="presentation"><a href="#">Donate </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li role="presentation">                
+                <a href="#"><%= current_user.email %></a>
+              </li>
+            <% else %>
               <li <%= 'class=active' if params[:controller] == 'user' && params[:action] == 'new' %> role="presentation">                
-                <a href=<%= new_user_path %>>Register <span class="glyphicon glyphicon-user"></span></a>
+                <a href="#"> Register <span class="glyphicon glyphicon-user"></span></a>
               </li>
               <li role="presentation"><a href="#"> Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+            <% end %>
           </ul>
       </div>
   </div>
 </nav>
 
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
 <%= yield %>
 
 <section class="footer">
+  <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <p class="text-center">Create with ❤ and hope to reduce the impacts on earth.</p>
         </div>
     </div>
+  </div>
 </section>
 
 </body>
