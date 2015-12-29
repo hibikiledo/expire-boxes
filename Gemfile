@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # use pry for method inspection
 gem 'pry'
+# use bower-rails to manage dependencies for front-end
+gem "bower-rails", "~> 0.10.0"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

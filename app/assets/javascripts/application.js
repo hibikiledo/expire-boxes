@@ -12,6 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+
+// Dashboard
+//= require bootstrap/dist/js/bootstrap
+//= require metisMenu/dist/metisMenu
+//= require raphael/raphael-min
+//= require morrisjs/morris
+//= require morris-data
+//= require sb-admin-2

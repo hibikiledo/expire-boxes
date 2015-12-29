@@ -12,19 +12,14 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap
+
+ * Dashboard
+ *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap-social/bootstrap-social
+ *= require metisMenu/dist/metisMenu
+ *= require morrisjs/morris
+ *= require font-awesome/css/font-awesome
+ *= require sb-admin-2
+ *= require timeline
  */
-
-
-.head .img-responsive {
-  margin: 0 auto;
-}
-
-.footer p {
-  font-size: 11px;
-}
-
-section .row{
-  overflow:hidden;
-}
 
