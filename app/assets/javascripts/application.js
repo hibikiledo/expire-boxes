@@ -15,11 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-// Dashboard
-//= require bootstrap/dist/js/bootstrap
-//= require metisMenu/dist/metisMenu
-//= require raphael/raphael-min
-//= require morrisjs/morris
-//= require morris-data
-//= require sb-admin-2
+// Material
+//= require bootstrap-material-design/dist/js/material
+//= require bootstrap-material-design/dist/js/ripple

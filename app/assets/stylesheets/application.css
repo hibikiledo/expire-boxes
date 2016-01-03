@@ -13,13 +13,7 @@
  *= require_tree .
  *= require_self
 
- * Dashboard
- *= require bootstrap/dist/css/bootstrap
- *= require bootstrap-social/bootstrap-social
- *= require metisMenu/dist/metisMenu
- *= require morrisjs/morris
- *= require font-awesome/css/font-awesome
- *= require sb-admin-2
- *= require timeline
- */
+ * Material
+ *= require bootstrap-material-design/dist/css/bootstrap-material-design
+ *= require bootstrap-material-design/dist/css/ripples
 
