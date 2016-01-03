@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  root "dashboard/dashboard#home"
+
   namespace :dashboard do
     get '/' => 'dashboard#home'
     resources :boxes
