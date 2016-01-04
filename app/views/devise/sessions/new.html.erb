@@ -1,44 +1,59 @@
-<div class="container-fluid sign-in">
-<section class="sign-in">
-    <div class="row devise-form">
+<div class="container">
+  <section class="sign-in">
+    <div class="row">
+       <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+          <h1>Expired Box</h1>
+          <p>
+            Expired Box stands for efficient uses of resources. We provide this service for <b>free</b>.
+            It will always be free. Expired Box runs on money of the dev team. However, feel free to donate.
+          </p>
+          <h3>Welcome Back</h3>
+          <p>
+            We love you.
+          </p>
+          <% if not flash.empty? %>
+            <div class="alert alert-dismissible alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>Ops!</strong>
+              <% flash.each do |name, msg| %>
+                <%= content_tag :li, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+              <% end %>   
+            </div>
+          <% end %>                 
+       </div>
+    </div>
+    <div class="row">          
       <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal custom-form'}) do |f| %>
-          <%= devise_error_messages! %>
-          <h1>Welcome Back!</h1>
-          <div class="form-group">
-            <div class="col-sm-4 label-column">
-              <label class="control-label" for="email-input-field">Email </label>
-            </div>
-            <div class="col-sm-6 input-column">
-              <%= f.email_field :email, class: 'form-control', autofocus: true %>
-            </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>        
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="email-input-field">Email</label>
+          <div class="col-sm-6">
+            <%= f.email_field :email, class: 'form-control', autofocus: true %>
+            <p class="help-block">email registered with expired-box</p>
+          </div>                 
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="password-input-field">Password</label>
+          <div class="col-sm-6">
+            <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
           </div>
-          <div class="form-group">
-            <div class="col-sm-4 label-column">
-              <label class="control-label" for="pawssword-input-field">Password </label>
-            </div>
-            <div class="col-sm-6 input-column">
-              <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
-            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-6 input-column-plain">
+            <%= f.check_box :remember_me %>
+            <label class="control-label">Remember me ? </label>
           </div>
-          <div class="form-group">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-6 input-column-plain">
-              <%= f.check_box :remember_me %>    
-              <label class="control-label">Remember me ? </label>              
-            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-6 input-column-plain">
+            <%= f.submit "Log in", class: "btn btn-raised btn-primary" %>
+            <%= render "devise/shared/links" %>
           </div>
-          <div class="form-group">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-6 input-column-plain">
-              <%= f.submit "Log in", class: "btn btn-default submit-button" %>          
-              <%= render "devise/shared/links" %> 
-            </div>
-          </div>  
-        <% end %>
+        </div>
+        <% end %>       
       </div>
     </div>
   </section>
 </div>
-
-

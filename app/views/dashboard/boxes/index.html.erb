@@ -1,0 +1,119 @@
+<div class="container">
+  <section class="boxes">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <h1>Available Boxes</h1>
+        <p>
+          Below is the list of available boxes.
+        </p>
+        <% if not flash.empty? %>
+            <div class="alert alert-dismissible alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>Ops!</strong>
+              <% flash.each do |name, msg| %>
+                <%= content_tag :li, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+              <% end %>   
+            </div>
+          <% end %>
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Box Name</th>
+              <th># Items in box</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @boxes.each_with_index do |box, index| %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= box.label %></td>
+                <td><%= box.items.count %></td>
+                <td>
+                  <i class="material-icons md-18 md-dark">edit</i>
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#confirm-box-delete" 
+                    onClick="saveTargetPath('<%= dashboard_box_path(box) %>', '<%= dashboard_boxes_path %>')">
+                    <i class="material-icons md-18 md-dark">delete</i>
+                  </a>
+                </td>
+              <tr>
+            <% end %>            
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+</section>
+</div>
+<!-- fab btn -->
+<div class="abs-fab">
+  <a href="<%= new_dashboard_box_path %>" class="btn btn-info btn-fab">
+    <i class="material-icons">add</i>
+  </a>
+</div>
+<!-- .fab btn -->
+
+<!-- dialogs -->
+<div id="confirm-box-delete" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Are you sure ?</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are about to delete a box.<br>Press <b>Yes</b> to confirm.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" onClick="performDeleteBox()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- .dialogs -->
+
+<!-- script -->
+<script>
+var URL = "";
+var HOME = "";
+
+function saveTargetPath(targetUrl, redirectUrl) {
+
+  URL = targetUrl;
+  HOME = redirectUrl;
+}
+
+function performDeleteBox() {
+  // send delete request to rails
+  $.ajax({ 
+    url: URL, 
+    data: {}, 
+    type: "DELETE", 
+    dataType : "json", 
+    success: function( json ) {
+       console.log(json);
+    }, 
+    error: function( xhr, status, errorThrown ) {
+        alert( "Sorry, there was a problem!" );
+        console.log( "Error: " + errorThrown );
+        console.log( "Status: " + status );
+        console.dir( xhr );
+    },
+    complete: function(xhr, status) {
+      $(location).attr('href', HOME)
+    }
+  });
+  // close dialog
+  $("#confirm-box-delete").modal('toggle');
+}
+
+
+</script>
+<!-- .script -->

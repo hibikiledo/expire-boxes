@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :accesses
-  has_many :boxes, through: :accesses
-
-  
+  has_many :boxes, through: :accesses  
 
 end
