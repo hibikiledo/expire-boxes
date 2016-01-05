@@ -17,6 +17,8 @@
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap-material-design/dist/css/bootstrap-material-design
  *= require bootstrap-material-design/dist/css/ripples
+ * boostrap-datepicker
+ *= require bootstrap-datepicker3
  */
 
 .abs-fab {

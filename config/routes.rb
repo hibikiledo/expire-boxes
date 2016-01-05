@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     get '/' => 'dashboard#home'
-    resources :boxes
-    resources :items
+    resources :boxes do
+      resources :items
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

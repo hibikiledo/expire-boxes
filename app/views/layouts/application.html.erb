@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Expired Box : Dashboard</title>
   </head>
   <body>
@@ -45,7 +45,7 @@
                 <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Log out", destroy_user_session_path %></li>
+                  <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
                 </ul>
               </li>
               <% end %>
@@ -54,14 +54,24 @@
         </div>
       </div>
       <!-- .top nav -->
-      <div class="container">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+          <%= breadcrumbs pretext: "", style: :bootstrap %>
+        </div>
+      </div>
+    </div>
+
+      <!--<div class="container">
         <div class="panel panel-info">
           <div class="panel-heading">Debugger Panel</div>
           <div class="panel-body">
             <%= params %>
           </div>
         </div>
-      </div>
+      </div>-->
+
       
       <%= yield %>
       <script>$.material.init()</script>

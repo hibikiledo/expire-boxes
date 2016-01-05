@@ -28,6 +28,8 @@ gem 'devise'
 gem 'pry'
 # use bower-rails to manage dependencies for front-end
 gem "bower-rails", "~> 0.10.0"
+# use gretel to help with breadcrumb
+gem "gretel"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
