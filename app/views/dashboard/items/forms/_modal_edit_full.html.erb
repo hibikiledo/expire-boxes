@@ -1,0 +1,49 @@
+<%= form_for @item,
+             url: dashboard_box_item_path(@box, @item, dest: '#{dashboard_box_item_path(@box, @item}'),
+             method: :patch, remote: true do |f| %>
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title"><%= @item.label %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group label-static">
+            <label class="control-label">Item Name</label>
+            <%= f.text_field :label, class: "form-control", autocomplete: "off" %>
+          </div>
+          <div class="form-group label-static">
+            <label class="control-label">Expire Date</label>
+            <div class="input-group date" data-provide="datepicker" data-date-format="yyyy/mm/dd">
+              <%= f.text_field :expire_date, class: "form-control" %>
+              <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group label-static">
+            <label class="control-label">Amount of item</label>
+            <div class="input-group">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="item[amount]">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+          </span>
+              <%= f.text_field :amount, class: "form-control input-number", value: "#{@item.amount}", min: "1", max: "10" %>
+              <span class="input-group-btn">
+          <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="item[amount]">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+          </span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Delete", dashboard_box_item_path(@box, @item, dest: '#{dashboard_box_item_path(@box, @item}'), method: :delete, remote: true, class: "btn btn-raised btn-danger" %>
+          <%= f.submit "Save", class: "btn btn-primary", style: "margin-bottom: 10px;" %>
+        </div>
+      </div>
+    </div>
+
+<% end %>

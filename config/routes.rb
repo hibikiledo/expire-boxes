@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   namespace :dashboard do
     get '/' => 'dashboard#home'
     resources :boxes do
-      resources :items
+      resources :items do
+
+      end
     end
   end
 

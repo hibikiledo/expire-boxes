@@ -27,11 +27,9 @@
                 <td><%= item.expire_date %></td>
                 <td><%= item.amount %></td>
                 <td>
-                  <i class="material-icons md-18 md-dark">edit</i>
-                  <a href="javascript:void(0)" data-toggle="modal" data-target="#confirm-box-delete"
-                     onClick="saveTarget('<%= dashboard_box_item_path(@box, item) %>', '<%= dashboard_box_items_path(@box) %>')">
-                    <i class="material-icons md-18 md-dark">delete</i>
-                  </a>
+                  <%= link_to '<i class="material-icons md-18 md-dark">edit</i>'.html_safe,
+                              edit_dashboard_box_item_path(@box, item, mode: 'full'),
+                              data: {toggle: 'modal', target: '#edit-item'}, remote: true %>
                 </td>
               <tr>
           <% end %>
@@ -52,57 +50,5 @@
 <!-- .fab btn -->
 
 <!-- dialogs -->
-<div id="confirm-box-delete" class="modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Are you sure ?</h4>
-      </div>
-      <div class="modal-body">
-        <p>You are about to delete an item.<br>Press <b>Yes</b> to confirm.
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary" onClick="performDeleteItem()">Yes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="edit-item" class="modal"></div>
 <!-- .dialogs -->
-
-<!-- script -->
-<script>
-  var URL;
-  var HOME;
-  function saveTarget(url, home) {
-    URL = url;
-    HOME = home;
-  }
-  function performDeleteItem() {
-    console.log(URL);
-    // send delete request to rails
-    $.ajax({
-      url: URL,
-      data: {},
-      type: "DELETE",
-      dataType : "json",
-      success: function( json ) {
-        console.log(json);
-      },
-      error: function( xhr, status, errorThrown ) {
-        alert( "Sorry, there was a problem!" );
-        console.log( "Error: " + errorThrown );
-        console.log( "Status: " + status );
-        console.dir( xhr );
-      },
-      complete: function(xhr, status) {
-        $(location).attr('href', HOME)
-      }
-    });
-    // close dialog
-    $("#confirm-box-delete").modal('hide');
-  }
-</script>
-<!-- .script -->
