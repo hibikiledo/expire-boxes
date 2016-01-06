@@ -12,7 +12,7 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def create
-    item = @box.items.new(create_item_params)
+    item = @box.items.new(item_params)
     unless item.save
       flash[:alert] = "Error adding new item into #{box.label}"
     end
