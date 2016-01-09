@@ -8,13 +8,23 @@ crumb :boxes do
 end
 
 crumb :box do |box|
-  link box.label, dashboard_box_path(box)
+  link box.label, dashboard_boxes_path
   parent :boxes
 end
 
 crumb :new_box do
   link "+", new_dashboard_box_path
   parent :boxes
+end
+
+crumb :accesses do |box|
+  link "Accesses", dashboard_box_accesses_path
+  parent :box, box
+end
+
+crumb :new_access do |box|
+  link "+", new_dashboard_box_access_path
+  parent :accesses, box
 end
 
 crumb :items do |box|
