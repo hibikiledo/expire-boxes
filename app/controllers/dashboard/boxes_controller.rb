@@ -42,11 +42,9 @@ class Dashboard::BoxesController < ApplicationController
   end
 
   def destroy
-    if box
-      box.accesses.destroy_all
-      box.items.destroy_all
-      box.destroy
-    end
+    @box.accesses.destroy_all
+    @box.items.destroy_all
+    @box.destroy    
     @redirect_path = params[:dest]
   end
 
