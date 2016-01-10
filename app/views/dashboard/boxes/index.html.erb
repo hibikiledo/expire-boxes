@@ -4,9 +4,10 @@
   <section class="boxes">
     <div class="row">
       <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-        <h1>Accesses</h1>
+        <h1>Avalilable Boxes</h1>
         <p>
-          Show list of user that have access to this box.
+          List of boxes visible to you. <br>
+          Including your own boxes and boxes shared by other members.
         </p>
         <%= render "dashboard/shared/flash" %>
         <table class="table table-striped table-hover ">
@@ -15,7 +16,7 @@
               <th>#</th>
               <th>Box Name</th>
               <th># Items in box</th>
-              <th>Actions</th>
+              <th>Actions</th>              
             </tr>
           </thead>
           <tbody>
@@ -24,13 +25,13 @@
                 <td><%= index + 1 %></td>
                 <td><%= link_to  box.label, dashboard_box_items_path(box) %></td>
                 <td><%= box.items.count %></td>
-                <td>
-                  <%= link_to '<i class="material-icons md-18 md-dark">edit</i>'.html_safe,
-                               edit_dashboard_box_path(box),
-                               data: {toggle: 'modal', target: '#edit-box'}, remote: true %>
-                  <%= link_to '<i class="material-icons md-18 md-dark">share</i>'.html_safe,
-                              dashboard_box_accesses_path(box) %>
-                </td>
+                  <td>
+                    <%= link_to '<i class="material-icons md-18 md-dark">edit</i>'.html_safe,
+                                 edit_dashboard_box_path(box),
+                                 data: {toggle: 'modal', target: '#edit-box'}, remote: true %>
+                    <%= link_to '<i class="material-icons md-18 md-dark">share</i>'.html_safe,
+                                dashboard_box_accesses_path(box) %>
+                  </td>
               <tr>
             <% end %>
           </tbody>

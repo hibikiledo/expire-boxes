@@ -1,7 +1,6 @@
 class Dashboard::AccessesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_resources
-  before_action :test_permission
+  before_action :load_and_authorize_resources  
 
   def index
     @accesses = @box.accesses
@@ -34,12 +33,13 @@ class Dashboard::AccessesController < ApplicationController
     def access_params
       params.require(:access).permit(:box_id, :role, :email, :role)
     end
-    def load_resources
+    def load_and_authorize_resources
       @box = current_user.boxes.find_by(id: params[:box_id])
       @access = @box.accesses.find_by(user_id: current_user.id)
-    end
-    def test_permission
-      redirect_to dashboard_path unless @access.owner?
+      unless @access.owner?
+        flash[:notice] = "You don't have permission to edit #{@box.label}."
+        redirect_to dashboard_path unless @access.owner?
+      end
     end
 
 end

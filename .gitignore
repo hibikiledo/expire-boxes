@@ -19,3 +19,8 @@
 
 # Ignore intellij junks
 .idea
+
+config/database.yml
+config/secrets.yml
+
+config/initializers/devise.rb

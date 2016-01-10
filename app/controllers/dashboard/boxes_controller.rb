@@ -1,7 +1,6 @@
 class Dashboard::BoxesController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :load_current_box, except: [:index, :new, :create]
+  before_action :load_current_box, only: [:edit, :update, :destroy]
 
   def index
     @boxes = current_user.boxes
@@ -45,7 +44,7 @@ class Dashboard::BoxesController < ApplicationController
   def destroy
     if box
       box.accesses.destroy_all
-      box.items.destroy_all   
+      box.items.destroy_all
       box.destroy
     end
     @redirect_path = params[:dest]
