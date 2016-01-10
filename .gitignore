@@ -20,7 +20,7 @@
 # Ignore intellij junks
 .idea
 
+# Ignore sensitive files
 config/database.yml
 config/secrets.yml
-
 config/initializers/devise.rb
