@@ -14,49 +14,49 @@
 ActiveRecord::Schema.define(version: 20151226085944) do
 
   create_table "accesses", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "box_id"
-    t.string   "role",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 4
+    t.integer  "box_id",     limit: 4
+    t.string   "role",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "accesses", ["box_id"], name: "index_accesses_on_box_id"
-  add_index "accesses", ["user_id"], name: "index_accesses_on_user_id"
+  add_index "accesses", ["box_id"], name: "index_accesses_on_box_id", using: :btree
+  add_index "accesses", ["user_id"], name: "index_accesses_on_user_id", using: :btree
 
   create_table "boxes", force: :cascade do |t|
-    t.string   "label",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "label",      limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer  "box_id"
-    t.string   "label",       null: false
-    t.date     "expire_date", null: false
-    t.integer  "amount",      null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "box_id",      limit: 4
+    t.string   "label",       limit: 255, null: false
+    t.date     "expire_date",             null: false
+    t.integer  "amount",      limit: 4,   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "items", ["box_id"], name: "index_items_on_box_id"
+  add_index "items", ["box_id"], name: "index_items_on_box_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

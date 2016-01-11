@@ -30,6 +30,8 @@ gem 'pry'
 gem "bower-rails", "~> 0.10.0"
 # use gretel to help with breadcrumb
 gem "gretel"
+# use mysql2
+gem 'mysql2', '~> 0.3.18'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
