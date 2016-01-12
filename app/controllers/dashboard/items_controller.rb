@@ -12,11 +12,13 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def create
-    item = @box.items.new(item_params)
-    unless item.save
-      flash[:alert] = "Error adding new item into #{box.label}"
+    @item = @box.items.new(item_params)
+    if @item.save
+      redirect_to dashboard_box_items_path(@box)
+    else
+      flash.now[:alert] = @item.errors.full_messages
+      render :new
     end
-    redirect_to dashboard_box_items_path(@box)
   end
 
   def edit
@@ -30,7 +32,7 @@ class Dashboard::ItemsController < ApplicationController
     item = @box.items.find_by(id: params[:id])
     success = item.update(item_params)
     unless success
-      flash[:error] = "There is an error updating the item"
+      flash[:alert] = item.errors.full_messages
     end
     @redirect_path = params[:dest]
   end
@@ -53,5 +55,5 @@ class Dashboard::ItemsController < ApplicationController
     def load_box
       @box = current_user.boxes.find_by(id: params[:box_id])
     end
-  
+
 end

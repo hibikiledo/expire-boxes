@@ -1,6 +1,6 @@
 class Dashboard::AccessesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_and_authorize_resources  
+  before_action :load_and_authorize_resources
 
   def index
     @accesses = @box.accesses
@@ -38,7 +38,7 @@ class Dashboard::AccessesController < ApplicationController
       @access = @box.accesses.find_by(user_id: current_user.id)
       unless @access.owner?
         flash[:notice] = "You don't have permission to edit #{@box.label}."
-        redirect_to dashboard_path unless @access.owner?
+        redirect_to dashboard_boxes_path unless @access.owner?
       end
     end
 

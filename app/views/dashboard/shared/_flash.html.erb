@@ -1,27 +1,31 @@
 <% if flash[:alert] %>
   <div class="alert alert-dismissible alert-danger">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <% if flash[:alert].is_a?(String) %>
-      <%= content_tag :li, flash[:alert] %>
-    <% end %>
-    <% if flash[:alert].is_a?(Array)  %>
-      <% flash[:alert].each do |msg| %>
-        <%= content_tag :li, msg %>
+    <ul>
+      <% if flash[:alert].is_a?(String) %>
+        <%= content_tag :li, flash[:alert] %>
       <% end %>
-    <% end %>
+      <% if flash[:alert].is_a?(Array)  %>
+        <% flash[:alert].each do |msg| %>
+          <%= content_tag :li, msg %>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 <% end %>
 
 <% if flash[:notice] %>
   <div class="alert alert-dismissible alert-info">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <% if flash[:notice].is_a?(String) %>
-      <%= content_tag :li, flash[:notice] %>
-    <% end %>
-    <% if flash[:notice].is_a?(Array)  %>
-      <% flash[:notice].each do |msg| %>
-        <%= content_tag :li, msg %>
+    <ul>
+      <% if flash[:notice].is_a?(String) %>
+        <%= content_tag :li, flash[:notice] %>
       <% end %>
-    <% end %>
+      <% if flash[:notice].is_a?(Array)  %>
+        <% flash[:notice].each do |msg| %>
+          <%= content_tag :li, msg %>
+        <% end %>
+      <% end %>
+    <ul>
   </div>
 <% end %>
