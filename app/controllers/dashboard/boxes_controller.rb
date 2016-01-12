@@ -20,12 +20,16 @@ class Dashboard::BoxesController < ApplicationController
     access.role = "owner"
     # write to db
     # if box is successfully saved but access fails, remove that box
-    begin
-      box.save!
-      access.save!
-    rescue
-      box.destroy
-      flash[:alert] = "Something went wrong. Contact @hbk"
+    if box.valid?
+      begin
+        box.save!
+        access.save!
+      rescue
+        box.destroy
+        flash[:alert] = "Box cannot be saved. Something went wrong."
+      end
+    else
+      flash[:alert] = box.errors.full_messages
     end
     redirect_to dashboard_boxes_path
   end
@@ -44,7 +48,7 @@ class Dashboard::BoxesController < ApplicationController
   def destroy
     @box.accesses.destroy_all
     @box.items.destroy_all
-    @box.destroy    
+    @box.destroy
     @redirect_path = params[:dest]
   end
 

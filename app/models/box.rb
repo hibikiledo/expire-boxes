@@ -4,6 +4,8 @@ class Box < ActiveRecord::Base
 
   has_many :items
 
+  validates :label, presence: true
+
   def method_missing(m, *args, &block)
     method = m.to_s
 
