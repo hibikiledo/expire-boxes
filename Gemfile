@@ -34,6 +34,8 @@ gem "gretel"
 gem 'mysql2', '~> 0.3.18'
 # use nprogress-bar to help with ux
 gem 'nprogress-rails'
+# use turboboost for ajax turbolinked form submission
+gem 'turboboost'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
