@@ -30,33 +30,34 @@
         <div class="navbar-collapse collapse navbar-warning-collapse">
           <ul class="nav navbar-nav">
             <li class="<%= 'active' if params[:controller] == 'dashboard/dashboard' && params[:action] == 'home' %>">
-              <a href="/">Dashboard</a></li>
-              <li class="<%= 'active' if params[:controller] == 'dashboard/boxes' && params[:action] == 'index' %>">
-                <%= link_to "Boxes", dashboard_boxes_path %>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <% if not user_signed_in? %>
-              <li class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>">
-                <%= link_to "Log in", new_user_session_path %>
-              </li>
-              <li class="<%= 'active' if params[:controller] == 'devise/registrations' && params[:action] == 'new' %>">
-              <%= link_to "Sign up", new_user_registration_path %></li>
-              <% else %>
-              <li class="dropdown">
-                <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>
-                <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-              <% end %>
-            </ul>
-          </div>
+              <a href="/">Dashboard</a>
+            </li>
+            <li class="<%= 'active' if params[:controller] == 'dashboard/boxes' && params[:action] == 'index' %>">
+              <%= link_to "Boxes", dashboard_boxes_path %>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if not user_signed_in? %>
+            <li class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>">
+              <%= link_to "Log in", new_user_session_path %>
+            </li>
+            <li class="<%= 'active' if params[:controller] == 'devise/registrations' && params[:action] == 'new' %>">
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <% else %>
+            <li class="dropdown">
+              <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>
+              <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
         </div>
       </div>
-      <!-- .top nav -->
-
+    </div>
+    <!-- .top nav -->
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
@@ -64,14 +65,7 @@
         </div>
       </div>
     </div>
-
-      <%= yield %>
-      <script>
-        $.material.init();
-        $(document).on('page:fetch',   function() { NProgress.start(); });
-        $(document).on('page:change',  function() { NProgress.done(); });
-        $(document).on('page:restore', function() { NProgress.remove(); });
-        NProgress.configure({ showSpinner: false });
-      </script>
-    </body>
-  </html>
+    <%= yield %>
+    <script>$.material.init();</script>
+  </body>
+</html>

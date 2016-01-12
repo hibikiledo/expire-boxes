@@ -26,3 +26,41 @@
 //= require nprogress/nprogress
 //
 //= require turboboost
+
+// register NProgress animations with turbolinks events
+$(document).on('page:fetch',   function() { NProgress.start(); });
+$(document).on('page:change',  function() { NProgress.done(); });
+$(document).on('page:restore', function() { NProgress.remove(); });
+NProgress.configure({ showSpinner: false });
+// handle flash message from back-end
+$(document).on('turboboost:success', function(e, flash) {
+  var alertInjectTarget = $('.flash-turboboost-alert .inject');
+  var noticeInjectTarget = $('.flash-turboboost-notice .inject');
+
+  // empty injection targets
+  alertInjectTarget.empty();
+  noticeInjectTarget.empty();
+
+  // show flash if it has > 1 in length
+  if (flash["alert"] && flash["alert"].length > 0) {
+    $('.flash-turboboost-alert').show();
+  } else {
+    $('.flash-turboboost-alert').hide();
+  }
+  if (flash["notice"] && flash["notice"].length > 0) {
+    $('.flash-turboboost-notice').show();
+  } else {
+    $('.flash-turboboost-notice').hide();
+  }
+
+  if (flash["alert"]){
+    for(var i=0; i<flash["alert"].length; i++) {
+      alertInjectTarget.append($('<li>').text(flash["alert"][i]));
+    }
+  }
+  if (flash["notice"]) {
+    for(var i=0; i<flash["notice"].length; i++) {
+      noticeInjectTarget.append($('<li>').text(flash["notice"][i]));
+    }
+  }
+});

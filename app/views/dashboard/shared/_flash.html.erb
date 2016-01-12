@@ -1,6 +1,7 @@
+<!-- Support for both turbolinks, turboboost, and rails template-->
+
 <% if flash[:alert] %>
   <div class="alert alert-dismissible alert-danger">
-    <button type="button" class="close" data-dismiss="alert">×</button>
     <ul>
       <% if flash[:alert].is_a?(String) %>
         <%= content_tag :li, flash[:alert] %>
@@ -16,7 +17,6 @@
 
 <% if flash[:notice] %>
   <div class="alert alert-dismissible alert-info">
-    <button type="button" class="close" data-dismiss="alert">×</button>
     <ul>
       <% if flash[:notice].is_a?(String) %>
         <%= content_tag :li, flash[:notice] %>
@@ -29,3 +29,11 @@
     <ul>
   </div>
 <% end %>
+
+<div class="flash-turboboost-alert alert alert-dismissible alert-danger">
+  <ul class="inject"></ul>
+</div>
+
+<div class="flash-turboboost-notice alert alert-dismissible alert-info">
+  <ul class="inject"></ul>
+</div>
