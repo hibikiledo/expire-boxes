@@ -65,17 +65,12 @@
       </div>
     </div>
 
-      <!--<div class="container">
-        <div class="panel panel-info">
-          <div class="panel-heading">Debugger Panel</div>
-          <div class="panel-body">
-            <%= params %>
-          </div>
-        </div>
-      </div>-->
-
-
       <%= yield %>
-      <script>$.material.init()</script>
+      <script>
+        $.material.init();
+        $(document).on('page:fetch',   function() { NProgress.start(); });
+        $(document).on('page:change',  function() { NProgress.done(); });
+        $(document).on('page:restore', function() { NProgress.remove(); });
+      </script>
     </body>
   </html>

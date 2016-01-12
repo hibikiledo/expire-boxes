@@ -23,3 +23,5 @@
 // bootstrap-datepicker3
 //= require bootstrap-datepicker
 //
+//= require nprogress/nprogress
+//

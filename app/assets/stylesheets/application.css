@@ -19,6 +19,8 @@
  *= require bootstrap-material-design/dist/css/ripples
  * boostrap-datepicker
  *= require bootstrap-datepicker3
+ * nprogress
+ *= require nprogress/nprogress
  */
 
 .abs-fab {

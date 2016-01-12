@@ -9,7 +9,8 @@
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
-      "bootstrap-material-design": "~0.5.7"
+      "bootstrap-material-design": "~0.5.7",
+      "nprogress": "~0.2.0"
     }
   }
 }
