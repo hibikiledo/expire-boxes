@@ -1,5 +1,6 @@
 <%= form_for @box,
-             url: dashboard_box_path(@box, dest: "#{dashboard_boxes_path}"), method: :patch, remote: true do |f| %>
+             url: dashboard_box_path(@box, dest: "#{dashboard_boxes_path}"),
+             method: :patch, remote: true do |f| %>
 
     <div class="modal-dialog">
       <div class="modal-content">
@@ -14,8 +15,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <%= link_to "Delete", dashboard_box_path(@box, @item, dest: '#{dashboard_boxes_path}'), method: :delete, remote: true, class: "btn btn-raised btn-danger" %>
-          <%= f.submit "Save", class: "btn btn-primary", style: "margin-bottom: 10px;" %>
+          <%= link_to "Delete",
+                  dashboard_box_path(@box, @item, dest: '#{dashboard_boxes_path}'),
+                  method: :delete, remote: true, class: "btn btn-raised btn-danger btn-modal" %>
+          <%= f.submit "Save", class: "btn btn-primary btn-modal", style: "margin-bottom: 10px;" %>
         </div>
       </div>
     </div>

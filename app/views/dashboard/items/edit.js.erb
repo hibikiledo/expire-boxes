@@ -1,4 +1,13 @@
-$('.modal').html('<%= escape_javascript(render 'dashboard/items/forms/modal_edit') %>');
+<% if @mode == 'compact'%>
+  $('.modal').html('<%= escape_javascript(render 'dashboard/items/forms/modal_edit') %>');
+<% elsif @mode == 'full' %>
+  $('.modal').html('<%= escape_javascript(render 'dashboard/items/forms/modal_edit_full') %>');
+<% end %>
+
+$('.btn-modal').on('click', function() {  
+  $(this).attr('disabled', 'disabled');
+  $(this).parents('form').submit()
+});
 
 // handle click
 $('.btn-number').click(function(e){

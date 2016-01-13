@@ -1,7 +1,7 @@
 class Dashboard::ItemsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :load_box
+  #before_action :delay
 
   def index
     @items = @box.items
@@ -9,6 +9,7 @@ class Dashboard::ItemsController < ApplicationController
 
   def new
     @item = @box.items.new
+    @today = Date.today.strftime('%Y-%m-%d')
   end
 
   def create
@@ -23,9 +24,7 @@ class Dashboard::ItemsController < ApplicationController
 
   def edit
     @item = @box.items.find_by(id: params[:id])
-    mode = params[:mode]
-    render "dashboard/items/edit" if mode == 'compact'
-    render "dashboard/items/edit_full" if mode == 'full'
+    @mode = params[:mode]
   end
 
   def update
@@ -54,6 +53,9 @@ class Dashboard::ItemsController < ApplicationController
     end
     def load_box
       @box = current_user.boxes.find_by(id: params[:box_id])
+    end
+    def delay
+      sleep 1
     end
 
 end

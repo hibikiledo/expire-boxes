@@ -14,18 +14,18 @@
           <%= render "dashboard/shared/flash" %>
        </div>
     </div>
-    <div class="row">          
+    <div class="row">
       <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>        
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
         <div class="form-group">
-          <label class="col-sm-4 control-label" for="email-input-field">Email</label>
+          <label class="col-sm-4 control-label">Email</label>
           <div class="col-sm-6">
             <%= f.email_field :email, class: 'form-control', autofocus: true %>
-            <p class="help-block">email registered with expired-box</p>
-          </div>                 
+            <p class="help-block">Email registered with expired-box</p>
+          </div>
         </div>
         <div class="form-group">
-          <label class="col-sm-4 control-label" for="password-input-field">Password</label>
+          <label class="col-sm-4 control-label">Password</label>
           <div class="col-sm-6">
             <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
           </div>
@@ -33,10 +33,15 @@
         <div class="form-group">
           <div class="col-sm-4"></div>
           <div class="col-sm-6 input-column-plain">
-            <%= f.check_box :remember_me %>
-            <label class="control-label">Remember me ? </label>
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :remember_me %>
+                  Remember me?
+                </label>
+              </div>
+              <p class="help-block">Automatically sign in when revisit the site.</p>
+            </div>
           </div>
-        </div>
         <div class="form-group">
           <div class="col-sm-4"></div>
           <div class="col-sm-6 input-column-plain">
@@ -44,7 +49,7 @@
             <%= render "devise/shared/links" %>
           </div>
         </div>
-        <% end %>       
+        <% end %>
       </div>
     </div>
   </section>

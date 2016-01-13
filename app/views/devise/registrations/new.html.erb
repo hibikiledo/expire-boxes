@@ -11,37 +11,31 @@
           <p>
             Fill in the form below. Thanks for visiting us.
           </p>
-          <% if not resource.errors.empty? %>
-            <div class="alert alert-dismissible alert-danger">
-              <button type="button" class="close" data-dismiss="alert">×</button>
-              <strong>Ops!</strong>
-              <%= devise_error_messages! %>
-            </div>
-          <% end %>                 
+          <%= render 'dashboard/shared/flash' %>          
        </div>
     </div>
-    <div class="row">      
+    <div class="row">
       <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>        
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="email-input-field">Email</label>
           <div class="col-sm-6">
             <%= f.email_field :email, class: 'form-control', autofocus: true %>
-            <p class="help-block">will be used as username</p>
-          </div>                 
+            <p class="help-block">Will be used as username</p>
+          </div>
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="password-input-field">Password</label>
           <div class="col-sm-6">
             <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
-            <p class="help-block">need at least 5 characters long</p>
+            <p class="help-block">At least 5 characters long</p>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="repeat-pawssword-input-field">Repeat Password</label>
           <div class="col-sm-6">
             <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
-            <p class="help-block">will be used for confirmation</p>
+            <p class="help-block">Will be used for confirmation</p>
           </div>
         </div>
         <div class="form-group">
