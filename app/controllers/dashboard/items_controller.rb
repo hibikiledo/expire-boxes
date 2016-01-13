@@ -1,7 +1,7 @@
 class Dashboard::ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_box
-  before_action :delay
+  #before_action :delay
 
   def index
     @items = @box.items
