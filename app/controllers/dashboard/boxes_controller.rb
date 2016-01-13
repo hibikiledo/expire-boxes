@@ -1,6 +1,7 @@
 class Dashboard::BoxesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_and_authorize_resources, only: [:edit, :update, :destroy]
+  before_action :delay
 
   def index
     @boxes = current_user.boxes
@@ -31,7 +32,6 @@ class Dashboard::BoxesController < ApplicationController
   end
 
   def edit
-    sleep 1
   end
 
   def update
@@ -64,6 +64,9 @@ class Dashboard::BoxesController < ApplicationController
     def load_and_authorize_resources
       @box = current_user.boxes.find_by(id: params[:id])
       @access = @box.accesses.find_by(user_id: current_user.id)
+    end
+    def delay
+      sleep 1
     end
 
 end
