@@ -1,7 +1,14 @@
-<!-- Support for both turbolinks, turboboost, and rails template-->
+<% if defined?(resource) && !(resource.errors.empty?) %>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Ops!</strong>
+    <%= devise_error_messages! %>
+  </div>
+<% end %>
 
 <% if flash[:alert] %>
   <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button
     <ul>
       <% if flash[:alert].is_a?(String) %>
         <%= content_tag :li, flash[:alert] %>
@@ -17,6 +24,7 @@
 
 <% if flash[:notice] %>
   <div class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert">×</button
     <ul>
       <% if flash[:notice].is_a?(String) %>
         <%= content_tag :li, flash[:notice] %>

@@ -31,6 +31,7 @@ class Dashboard::BoxesController < ApplicationController
   end
 
   def edit
+    sleep 1
   end
 
   def update
