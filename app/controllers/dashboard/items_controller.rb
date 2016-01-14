@@ -15,7 +15,8 @@ class Dashboard::ItemsController < ApplicationController
   def create
     @item = @box.items.new(item_params)
     if @item.save
-      redirect_to dashboard_box_items_path(@box)
+      flash.now[:notice] = "#{@item.label} is successfully added."
+      redirect_to new_dashboard_box_item_path(@box)
     else
       flash.now[:alert] = @item.errors.full_messages
       render :new

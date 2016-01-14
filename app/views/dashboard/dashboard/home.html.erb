@@ -11,7 +11,12 @@
         <%= render "dashboard/shared/flash" %>
         <hr>
         <% @boxes.each do |box| %>
-            <h3><%= box.label %></h3>
+            <h3 class="btn-group-sm">
+              <%= box.label %>
+              <a href="<%= new_dashboard_box_item_path(box) %>" class="btn btn-default btn-fab">
+                <i class="material-icons">add</i>
+              </a>
+            </h3>
             <table class="table table-striped table-hover ">
               <thead>
               <tr>

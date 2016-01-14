@@ -33,6 +33,7 @@ $(document).on('page:change',  function() { NProgress.done(); });
 $(document).on('page:restore', function() { NProgress.remove(); });
 NProgress.configure({ showSpinner: false });
 // handle flash message from back-end
+
 $(document).on('turboboost:success', function(e, flash) {
   var alertInjectTarget = $('.flash-turboboost-alert .inject');
   var noticeInjectTarget = $('.flash-turboboost-notice .inject');
@@ -47,20 +48,13 @@ $(document).on('turboboost:success', function(e, flash) {
   } else {
     $('.flash-turboboost-alert').hide();
   }
-  if (flash["notice"] && flash["notice"].length > 0) {
-    $('.flash-turboboost-notice').show();
-  } else {
-    $('.flash-turboboost-notice').hide();
-  }
 
-  if (flash["alert"]){
+  if (flash["alert"] instanceof Array){
     for(var i=0; i<flash["alert"].length; i++) {
       alertInjectTarget.append($('<li>').text(flash["alert"][i]));
     }
+  } else {
+    alertInjectTarget.append($('<li>').text(flash["alert"]));
   }
-  if (flash["notice"]) {
-    for(var i=0; i<flash["notice"].length; i++) {
-      noticeInjectTarget.append($('<li>').text(flash["notice"][i]));
-    }
-  }
+
 });
