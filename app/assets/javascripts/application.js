@@ -20,8 +20,6 @@
 //= require bootstrap-material-design/dist/js/material
 //= require bootstrap-material-design/dist/js/ripples
 //
-// bootstrap-datepicker3
-//= require bootstrap-datepicker
 //
 //= require nprogress/nprogress
 //

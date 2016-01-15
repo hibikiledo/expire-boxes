@@ -4,9 +4,18 @@
   $('.modal').html('<%= escape_javascript(render 'dashboard/items/forms/modal_edit_full') %>');
 <% end %>
 
-$('.btn-modal').on('click', function() {  
+$('.btn-modal').on('click', function() {
   $(this).attr('disabled', 'disabled');
   $(this).parents('form').submit()
+});
+
+// Register listener for date data
+$('.exp').on('change', function() {
+  var expireDateComps = $('.exp');
+  var day = $(expireDateComps[2]).val();
+  var month = $(expireDateComps[1]).val();
+  var year = $(expireDateComps[0]).val();
+  $('#exp-date').val(year + "-" + month + "-" + day);
 });
 
 // handle click

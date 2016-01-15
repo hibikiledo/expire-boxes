@@ -10,6 +10,8 @@ class Dashboard::ItemsController < ApplicationController
   def new
     @item = @box.items.new
     @today = Date.today.strftime('%Y-%m-%d')
+    @this_year = Date.today.strftime('%Y')
+    @max_day = Date.today.end_of_month.strftime('%d')
   end
 
   def create
