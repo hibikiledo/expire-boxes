@@ -1,5 +1,5 @@
 <%= form_for @item,
-             url: dashboard_box_item_path(@box, @item, dest: dashboard_box_items_path(@box)),
+             url: dashboard_box_item_path(@box, @item, dest: dashboard_path(@box)),
              method: :patch, remote: true do |f| %>
 
   <div class="modal-dialog">
