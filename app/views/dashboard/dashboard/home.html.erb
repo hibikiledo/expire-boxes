@@ -12,7 +12,7 @@
         <hr>
         <% @boxes.each do |box| %>
             <h3 class="btn-group-sm">
-              <%= box.label %>
+              <a href="<%= dashboard_box_items_path(box) %>"><%= box.label %></a>
               <a href="<%= new_dashboard_box_item_path(box) %>" class="btn btn-default btn-fab">
                 <i class="material-icons">add</i>
               </a>
