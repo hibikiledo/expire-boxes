@@ -6,7 +6,7 @@
       <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         <h1>Share with</h1>
         <p>
-          Share <%= @box.label %> with other people.
+          Share <b><%= @box.label %></b> with other people.
         </p>
         <%= render "dashboard/shared/flash" %>
       </div>
@@ -24,18 +24,18 @@
             <div class="radio radio-primary">
               <label>
                 <%= radio_button_tag 'access[role]', 'user' %>
-                User
+                User (Only Add/Remove Items)
               </label>
             </div>
             <div class="radio radio-primary">
               <label>
                 <%= radio_button_tag 'access[role]', 'owner' %>
-                Owner
+                Owner (Full control)
               </label>
             </div>
           </div>
         <div>
-          <%= f.submit "Create", class: "btn btn-raised btn-primary" %>
+          <%= f.submit "Share", class: "btn btn-raised btn-primary" %>
         </div>
       <% end %>
     </div>
