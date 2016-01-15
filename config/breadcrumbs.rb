@@ -1,5 +1,5 @@
 crumb :root do
-  link "Dashboard", dashboard_path
+  link '<i class="material-icons md-18">home</i>'.html_safe, dashboard_path
 end
 
 crumb :boxes do
