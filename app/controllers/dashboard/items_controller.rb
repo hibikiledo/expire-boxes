@@ -1,5 +1,6 @@
 class Dashboard::ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_shared_data
   before_action :load_box
   # before_action :delay
 
@@ -10,8 +11,6 @@ class Dashboard::ItemsController < ApplicationController
   def new
     @item = @box.items.new
     @today = Date.today.strftime('%Y-%m-%d')
-    @this_year = Date.today.strftime('%Y')
-    @max_day = Date.today.end_of_month.strftime('%d')
   end
 
   def create
@@ -53,6 +52,10 @@ class Dashboard::ItemsController < ApplicationController
   private
     def item_params
       params.require(:item).permit(:label, :expire_date, :amount)
+    end
+    def load_shared_data
+      @this_year = Date.today.strftime('%Y')
+      @max_day = Date.today.end_of_month.strftime('%d')
     end
     def load_box
       @box = current_user.boxes.find_by(id: params[:box_id])
