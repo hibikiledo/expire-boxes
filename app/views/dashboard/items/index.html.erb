@@ -9,13 +9,28 @@
           List of items belong to this box.
         </p>
         <%= render "dashboard/shared/flash" %>
+
+        <!-- <% @items.each_with_index do |item, index| %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <b><%= item.label %> </b>
+              <%= link_to '<i class="material-icons md-18 md-dark">edit</i>'.html_safe,
+                          edit_dashboard_box_item_path(@box, item, mode: 'full'),
+                          data: {toggle: 'modal', target: '#edit-item'}, remote: true %>
+            </div>
+            <div class="panel-body">
+              Expire Date : <%= item.expire_date %><br>
+              Amount : <%= item.amount %><br>
+            </div>
+          </div>
+        <% end %> -->
+
         <table class="table table-striped table-hover ">
           <thead>
           <tr>
             <th>#</th>
-            <th>Item Name</th>
-            <th>Expire Date</th>
-            <th>Amounts</th>
+            <th>Item Name<br>Name (amount)</th>
+            <th>Expire Date<br>yyyy-mm-dd</th>
             <th>Actions</th>
           </tr>
           </thead>
@@ -23,9 +38,8 @@
           <% @items.each_with_index do |item, index| %>
               <tr>
                 <td><%= index + 1 %></td>
-                <td><%= item.label %></td>
+                <td><%= item.label %> (<%= item.amount %>)</td>
                 <td><%= item.expire_date %></td>
-                <td><%= item.amount %></td>
                 <td>
                   <%= link_to '<i class="material-icons md-18 md-dark">edit</i>'.html_safe,
                               edit_dashboard_box_item_path(@box, item, mode: 'full'),
@@ -35,7 +49,6 @@
           <% end %>
           </tbody>
         </table>
-
       </div>
     </div>
   </section>
