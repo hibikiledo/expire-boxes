@@ -16,7 +16,7 @@
         </div>
         <div class="modal-footer">
           <%= link_to "Delete",
-                  dashboard_box_path(@box, @item, dest: '#{dashboard_boxes_path}'),
+                  dashboard_box_path(@box, @item, dest: "#{dashboard_boxes_path}"),
                   method: :delete, remote: true, class: "btn btn-raised btn-danger btn-modal" %>
           <%= f.submit "Save", class: "btn btn-primary btn-modal", style: "margin-bottom: 10px;" %>
         </div>
