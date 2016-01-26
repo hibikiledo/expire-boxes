@@ -18,3 +18,6 @@ Reduce number of spoiled products in the fridge and shelves.
 1. Responsive web application that allows basic operations including adding/removing container and items.
 2. Open API for better integration with embeded systems.
 
+## Staging
+
+http://expired-box.hibikiledo.me
